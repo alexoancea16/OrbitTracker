@@ -182,7 +182,7 @@ Analysis of the distribution of the exogenous signal and the second derivative o
 The graph shows us a symmetric histogram around the value 0, specific to a normal distribution $\mathcal{N}(0, 1)$ and shows that the exogenous signal has the highest probability of taking values ​​close to the mean (0), and the probability decreases as we move away from it. Also, in the distribution of the second discrete derivative of the output, values ​​are much more concentrated around a small positive value, so it indicates that the output, even if influenced by the exogenous signal u(t), has a more controlled dynamics. <br>
 ![Figure 1: Simulink Model](Figure/msimg9.png)
 
-$$ Conclusion 
+## Conclusion 
 Both methods used, the 4th order Runge-Kutta method (RK4) and the Simulink simulation, provided consistent results in modeling satellite motion, with minor differences between them, confirming the accuracy of the implementations. <br>
 The integration error between the numerical methods and Simulink, calculated by the 2-norm, showed that the Runge-Kutta method is sufficiently accurate for the simulations performed. Thus, the RK4 method can be successfully used for fast simulations, without resorting to Simulink. <br>
 Simulations with uncertainties (multiplicative and additive) have highlighted that the initial position of the satellites can significantly affect the final trajectory. This analysis is useful to better understand the variability in satellite motion in the presence of perturbations. <br>
