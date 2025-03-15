@@ -152,10 +152,10 @@ Illustrating the satellite orbits on the same graph, using the same initial cond
 Evaluation of the integration error, performing both model simulation and the Runge-Kutta method. The integration error was calculated as the norm 2 of the difference obtained at each time point. The result obtained is represented in the graph below. The graph shows a linear increase in error during the simulation. The Runge-Kutta method uses a constant integration step, and Simulink adjusts the step dynamically, these differences can contribute to the accumulation of error. <br>
 ![Figure 1: Simulink Model](Figure/msimg4.png)
 ### Stage 7
-Illustration of the dependence $\varepsilon^{*} &(u^{*})$ at the final time $t_f$, the maximum time instant considered in the simulation. The result obtained is represented in the graph below. The evolution suggests a proportionality between the perturbative acceleration and the final value of the relative error, at least for higher values ​​of k. On the other hand, the graph suggests that the system is more sensitive to small perturbations. <br>
+Illustration of the dependence $\varepsilon^{\ast}(u^{\ast})$ at the final time $t_f$, the maximum time instant considered in the simulation. The result obtained is represented in the graph below. The evolution suggests a proportionality between the perturbative acceleration and the final value of the relative error, at least for higher values ​​of k. On the other hand, the graph suggests that the system is more sensitive to small perturbations. <br>
 ![Figure 1: Simulink Model](Figure/msimg5.png)
 ### Stage 8
-Determining the approximation polynomial using the previously calculated values, determining the coefficients that best fit these coordinates. The graphical result indicates that the chosen polynomial provides an adequate description of the relationship between $\varepsilon^{\phantom{x}}$ and $u^{\phantom{x}}$. <br>
+Determining the approximation polynomial using the previously calculated values, determining the coefficients that best fit these coordinates. The graphical result indicates that the chosen polynomial provides an adequate description of the relationship between $\varepsilon^{\ast}$ and $u^{\ast}$. <br>
 ![Figure 1: Simulink Model](Figure/msimg6.png)
 ### Stage 9
 We consider a multiplicative uncertainty of the initial position $\({r}_2(t_0)\)$ given by the relation
@@ -168,16 +168,26 @@ where $\(\alpha \sim \mathcal{N}(0, 0.1)\)$ is a scalar. <br>
 Graficul de mai jos arată că sistemul devine mai sensibil la anumite condiții inițiale, iar eroarea tinde să crească exponențial în timp, ceea ce sugerează o divergență tot mai mare între sateliți din cauza acumulării incertitudinii. <br>
 ![Figure 1: Simulink Model](Figure/msimg7.png)
 ### Stage 10
-Considerăm o incertitudine aditivă a poziției inițiale $\({r}_2(t_0)\)$ dată de relația 
+We consider an additive uncertainty of the initial position $\({r}_2(t_0)\)$ given by the relation
 ```math
 $$
 \tilde{{r}}_2(t_0) = (\alpha) + {r}_2(t_0),
 $$
 ```
-unde \(\alpha_{i} \sim \mathcal{N}(0, 5), i=1:3\). Vom analiza comportamentul lui $y(t)$ în 100 de simulări folosind această incertitudine. <br>
+where $\(\alpha_{i} \sim \mathcal{N}(0, 5), i=1:3\)$. We will analyze the behavior of $y(t)$ in 100 simulations using this uncertainty. <br>
 The graph below shows that due to the additive nature of the uncertainty, the spread of error values ​​is more uniform and concentrated, unlike the multiplicative uncertainty, where the divergence was more pronounced. Thus, additive uncertainty leads to an increase in the distance between satellites, but in a more controlled way compared to the multiplicative case. <br>
 ![Figure 1: Simulink Model](Figure/msimg8.png)
 ### Stage 11
 Analysis of the distribution of the exogenous signal and the second derivative of the output assuming that u(t) has a normal distribution. <br>
 The graph shows us a symmetric histogram around the value 0, specific to a normal distribution $\mathcal{N}(0, 1)$ and shows that the exogenous signal has the highest probability of taking values ​​close to the mean (0), and the probability decreases as we move away from it. Also, in the distribution of the second discrete derivative of the output, values ​​are much more concentrated around a small positive value, so it indicates that the output, even if influenced by the exogenous signal u(t), has a more controlled dynamics. <br>
 ![Figure 1: Simulink Model](Figure/msimg9.png)
+
+$$ Conclusion 
+Both methods used, the 4th order Runge-Kutta method (RK4) and the Simulink simulation, provided consistent results in modeling satellite motion, with minor differences between them, confirming the accuracy of the implementations. <br>
+The integration error between the numerical methods and Simulink, calculated by the 2-norm, showed that the Runge-Kutta method is sufficiently accurate for the simulations performed. Thus, the RK4 method can be successfully used for fast simulations, without resorting to Simulink. <br>
+Simulations with uncertainties (multiplicative and additive) have highlighted that the initial position of the satellites can significantly affect the final trajectory. This analysis is useful to better understand the variability in satellite motion in the presence of perturbations. <br>
+
+### Improvements and extensions
++ *Improved Accuracy:* Implementing a variable-step integration method could reduce numerical errors during critical phases without significantly increasing simulation time.
++ *External Influences:* Adding gravitational effects from other celestial bodies, such as the Sun and Moon, could make the simulations more realistic for long-term orbit predictions.
++ *Control System Integration:* Extending the model to include satellite control systems that adjust trajectories in real-time based on detected perturbations would make the simulations more practical for space engineering applications.
