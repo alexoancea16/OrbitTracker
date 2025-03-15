@@ -143,6 +143,41 @@ g(t, {{r_2}}(t), \dot{{r_2}}(t)) \\
 $$
 ```
 ### Stage 4
-Solving the differential system $ \dot{x}(t) = f(t,x(t)) $ using the fourth-order Runge-Kutta method. We consider the integration step $h=1$ second, the input $F_m(t)=0$ and the time interval $t \in [0;1800]$.
+Solving the differential system $\dot{x}(t) = f(t,x(t))$ using the fourth-order Runge-Kutta method. We consider the integration step $h=1$ second, the input $F_m(t)=0$ and the time interval $t \in [0;1800]$.
 ### Stage 5
-
+Illustrating the satellite orbits on the same graph, using the same initial conditions. The results obtained are represented in the graphs below. The results are similar. Unfortunately, due to the format of the numbers within the Simulink model, the graph is resized with zoom in resulting in a different appearance. <br>
+![Figure 1: Simulink Model](Figure/msimg2.png)
+![Figure 1: Simulink Model](Figure/msimg3.png)
+### Stage 6
+Evaluation of the integration error, performing both model simulation and the Runge-Kutta method. The integration error was calculated as the norm 2 of the difference obtained at each time point. The result obtained is represented in the graph below. The graph shows a linear increase in error during the simulation. The Runge-Kutta method uses a constant integration step, and Simulink adjusts the step dynamically, these differences can contribute to the accumulation of error. <br>
+![Figure 1: Simulink Model](Figure/msimg4.png)
+### Stage 7
+Illustration of the dependence $\varepsilon^{*} &(u^{*})$ at the final time $t_f$, the maximum time instant considered in the simulation. The result obtained is represented in the graph below. The evolution suggests a proportionality between the perturbative acceleration and the final value of the relative error, at least for higher values ​​of k. On the other hand, the graph suggests that the system is more sensitive to small perturbations. <br>
+![Figure 1: Simulink Model](Figure/msimg5.png)
+### Stage 8
+Determining the approximation polynomial using the previously calculated values, determining the coefficients that best fit these coordinates. The graphical result indicates that the chosen polynomial provides an adequate description of the relationship between $\varepsilon^{\phantom{x}}$ and $u^{\phantom{x}}$. <br>
+![Figure 1: Simulink Model](Figure/msimg6.png)
+### Stage 9
+We consider a multiplicative uncertainty of the initial position $\({r}_2(t_0)\)$ given by the relation
+```math
+$$
+\tilde{{r}}_2(t_0) = (1 + \alpha) \cdot{r}_2(t_0),
+$$
+```
+where $\(\alpha \sim \mathcal{N}(0, 0.1)\)$ is a scalar. <br>
+Graficul de mai jos arată că sistemul devine mai sensibil la anumite condiții inițiale, iar eroarea tinde să crească exponențial în timp, ceea ce sugerează o divergență tot mai mare între sateliți din cauza acumulării incertitudinii. <br>
+![Figure 1: Simulink Model](Figure/msimg7.png)
+### Stage 10
+Considerăm o incertitudine aditivă a poziției inițiale $\({r}_2(t_0)\)$ dată de relația 
+```math
+$$
+\tilde{{r}}_2(t_0) = (\alpha) + {r}_2(t_0),
+$$
+```
+unde \(\alpha_{i} \sim \mathcal{N}(0, 5), i=1:3\). Vom analiza comportamentul lui $y(t)$ în 100 de simulări folosind această incertitudine. <br>
+The graph below shows that due to the additive nature of the uncertainty, the spread of error values ​​is more uniform and concentrated, unlike the multiplicative uncertainty, where the divergence was more pronounced. Thus, additive uncertainty leads to an increase in the distance between satellites, but in a more controlled way compared to the multiplicative case. <br>
+![Figure 1: Simulink Model](Figure/msimg8.png)
+### Stage 11
+Analysis of the distribution of the exogenous signal and the second derivative of the output assuming that u(t) has a normal distribution. <br>
+The graph shows us a symmetric histogram around the value 0, specific to a normal distribution $\mathcal{N}(0, 1)$ and shows that the exogenous signal has the highest probability of taking values ​​close to the mean (0), and the probability decreases as we move away from it. Also, in the distribution of the second discrete derivative of the output, values ​​are much more concentrated around a small positive value, so it indicates that the output, even if influenced by the exogenous signal u(t), has a more controlled dynamics. <br>
+![Figure 1: Simulink Model](Figure/msimg9.png)
