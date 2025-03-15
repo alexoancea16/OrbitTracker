@@ -191,3 +191,8 @@ Simulations with uncertainties (multiplicative and additive) have highlighted th
 + *Improved Accuracy:* Implementing a variable-step integration method could reduce numerical errors during critical phases without significantly increasing simulation time.
 + *External Influences:* Adding gravitational effects from other celestial bodies, such as the Sun and Moon, could make the simulations more realistic for long-term orbit predictions.
 + *Control System Integration:* Extending the model to include satellite control systems that adjust trajectories in real-time based on detected perturbations would make the simulations more practical for space engineering applications.
+
+__Thank you!__ <br>
+
+Project made by Alexandru Oancea <br<
+Email: alexandruoancea49@gmail.com
