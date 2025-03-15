@@ -118,8 +118,31 @@ The first requirement for carrying out the project is to choose an initial condi
 ```
 ### Stage 2
 Creating the model in Simulink using Integrator and Matlab function blocks. We considered a Matlab function block to simulate the system of equations that describe the model. For the input $u(t)$ we initially considered a Step block with the associated value $u(t)=2 \cdot 10^{-3} \cdot 1(t)$. Also, for each of the Integrator blocks we added the initial conditions. The model in the _SimulinkFileModel.slx_ file is represented in the figure below.
-
+![Figure 1: Simulink Model](Figure/msimg1.png)
 ### Stage 3
+Writing the system in the form of $1^{st}$ order differential equations:
+```math
+$$
+\dot{x} =
+\begin{bmatrix}
+\dot{{r_1}}(t) \\
+\ddot{{r_1}}(t) \\
+\dot{{r_2}}(t) \\
+\ddot{{r_2}}(t) \\
+\dot{\varepsilon}(t)
+\end{bmatrix}
+=
+\begin{bmatrix}
+\dot{{r_1}}(t) \\
+g(t, {{r_1}}(t), \dot{{r_1}}(t)) + u(t) \\
+\dot{{r_2}}(t) \\
+g(t, {{r_2}}(t), \dot{{r_2}}(t)) \\
+\frac{\| {{r_1}(t) - {r_2}(t) } \|_2}{\| {r_2}(t)\|_2}
+\end{bmatrix}
+\in \mathbb{R}^{13 \times 1}
+$$
+```
 ### Stage 4
+Solving the differential system $ \dot{x}(t) = f(t,x(t)) $ using the fourth-order Runge-Kutta method. We consider the integration step $h=1$ second, the input $F_m(t)=0$ and the time interval $t \in [0;1800]$.
 ### Stage 5
 
